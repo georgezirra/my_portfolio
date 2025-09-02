@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George Vahyella Zirra - Geospatial Analyst & Data Scientist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom animations and styles */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .skill-bar {
+            transition: width 2s ease-in-out;
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #3b82f6;
+        }
+
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glass morphism effect */
+        .glass {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+		
+		.footer {
+            background: var(--bg-secondary);
+            padding: 3rem 1rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+	
+		
+    </style>
+</head>
+<body class="font-sans leading-normal tracking-normal scroll-smooth">
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md shadow-lg transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold gradient-text">George Vahyella Zirra</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">About</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">Projects</a>
+                    <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">Experience</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+					
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden mt-4" id="mobile-menu" >
+                <a href="#home" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors">About</a>
+                <a href="#skills" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors">Skills</a>
+                <a href="#projects" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors">Projects</a>
+                <a href="#experience" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors">Experience</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+            </div>
+			
+
+		
+		<script>
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuLinks = mobileMenu.querySelectorAll("a");
+
+  // Toggle mobile menu
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  // Auto-close menu when a link is clicked
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  });
+</script>
+
+        </div>
+    </nav>
+
+
+
+
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center bg-gradient-to-br from-blue-50 to-indigo-100 pt-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="w-full flex flex-col items-center justify-center text-center px-4 mb-10 lg:mb-0 lg:w-1/2">
+    <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-800 mb-4 animate-fade-in-up">
+        Hi, I'm <span class="gradient-text">George</span>
+    </h1>
+    <h2 class="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+        Geospatial Analyst and Data Scientist
+    </h2>
+    <p class="text-base sm:text-lg text-gray-700 text-justify mb-8 animate-fade-in-up max-w-xl" style="animation-delay: 0.4s;">
+        I turn satellite imagery, GIS layers and tabular data into maps, dashboards and decision-ready insights for governments, NGOs and businesses in Nigeria and beyond.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style="animation-delay: 0.6s;">
+        <a href="#projects" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors text-center">
+            View My Work
+        </a>
+        <a href="#contact" class="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition-colors text-center">
+            Get In Touch
+        </a>
+    </div>
+</div>
+				<div class="w-full lg:w-1/2 flex justify-center mb-8 lg:mb-0">
+    <div class="relative animate-float">
+        <div class="w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 
+                    bg-gradient-to-r from-blue-400 to-purple-500 rounded-full 
+                    flex items-center justify-center shadow-2xl">
+            
+            <img src="george.jpg" alt="George Picture" 
+                 class="w-full h-full rounded-full object-cover">
+            <!-- Replace with your actual photo if needed -->
+        </div>
+    </div>
+</div>
+
+
+               
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 sm:py-16 lg:py-20 bg-white">
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6">
+        <!-- Section Heading -->
+        <div class="text-center mb-10 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">About Me</h2>
+            <div class="w-16 sm:w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <!-- Left Column -->
+            <div class="space-y-6">
+                <p class="text-base sm:text-lg text-justify text-gray-700 leading-relaxed">
+                    M.Sc. student in Geographic Information Systems at Adamawa State University, Mubi. 
+                    I specialize in GIS/Remote Sensing workflows 
+                    (ArcGIS, QGIS, Google Earth Engine) and data science in Python. 
+                    My focus: rainfall and vegetation dynamics and terrain visualization with DEMs. 
+                </p>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-2 gap-4 sm:gap-6 mt-6 sm:mt-8">
+                    <div class="text-center p-4 sm:p-6 bg-gray-50 rounded-lg">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">5+</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Projects Completed</p>
+                    </div>
+                    <div class="text-center p-4 sm:p-6 bg-gray-50 rounded-lg">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">1+</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Years Experience</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="lg:pl-8">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 sm:p-8 rounded-2xl">
+                    <h3 class="text-xl sm:text-2xl font-bold text-center text-gray-800 mb-4 sm:mb-6">What I Do</h3>
+                    <div class="space-y-4">
+                        <!-- Skill 1 -->
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="bg-blue-600 text-white p-2 sm:p-3 rounded-lg">
+                                <i class="fas fa-globe text-sm sm:text-base"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">GIS & Remote Sensing</h4>
+                                <p class="text-gray-600 text-xs sm:text-sm">ArcGIS, QGIS, GEE, CHIRPS, Landsat, Sentinel-2, DEMs</p>
+                            </div>
+                        </div>
+                        <!-- Skill 2 -->
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="bg-blue-600 text-white p-2 sm:p-3 rounded-lg">
+                                <i class="fas fa-robot text-sm sm:text-base"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Python & ML</h4>
+                                <p class="text-gray-600 text-xs sm:text-sm">Pandas, Numpy, Scikit-learn, Geopandas, Matplotlib, Seaborn.</p>
+                            </div>
+                        </div>
+                        <!-- Skill 3 -->
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="bg-blue-600 text-white p-2 sm:p-3 rounded-lg">
+                                <i class="fas fa-file-excel text-sm sm:text-base"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Data & Apps</h4>
+                                <p class="text-gray-600 text-xs sm:text-sm">Excel, Power BI.</p>
+                            </div>
+                        </div>
+						
+						<div class="flex items-start space-x-3 sm:space-x-4">
+    <!-- Icon Section -->
+    <div class="bg-blue-600 text-white p-2 sm:p-3 rounded-lg">
+        <i class="fas fa-code text-sm sm:text-base"></i>
+    </div>
+
+    <!-- Text Section -->
+    <div>
+        <h4 class="font-semibold text-gray-800">Web Development</h4>
+        <p class="text-gray-600 text-xs sm:text-sm">HTML, CSS, JavaScript, React, Tailwind.</p>
+    </div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Skills & Tools</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Frontend Skills -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="text-center mb-6">
+                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-globe text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">GIS & Remote Sensing</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700">ArcGIS, QGIS</span>
+                                <span class="text-blue-600">95%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700">GEE </span>
+                                <span class="text-blue-600">90%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700">CHIRPS, Landsat, Sentinel-2, DEMs</span>
+                                <span class="text-blue-600">90%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend Skills -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="text-center mb-6">
+                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-robot text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Python & ML</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700">Pandas, Numpy </span>
+                                <span class="text-green-600">85%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700">Scikit-learn</span>
+                                <span class="text-green-600">80%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700">Geopandas, Matplotlib, Seaborn.</span>
+                                <span class="text-green-600">80%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+<!-- Web Development Skills -->
+<div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+    <div class="text-center mb-6">
+        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-laptop-code text-blue-600 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800">Web Development</h3>
+    </div>
+    <div class="space-y-4">
+        <!-- HTML/CSS -->
+        <div class="skill-item">
+            <div class="flex justify-between mb-2">
+                <span class="text-gray-700">HTML/CSS</span>
+                <span class="text-blue-600">95%</span>
+            </div>
+            <div class="bg-gray-200 rounded-full h-2">
+                <div class="bg-blue-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="95%"></div>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="skill-item">
+            <div class="flex justify-between mb-2">
+                <span class="text-gray-700">JavaScript</span>
+                <span class="text-blue-600">90%</span>
+            </div>
+            <div class="bg-gray-200 rounded-full h-2">
+                <div class="bg-blue-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="90%"></div>
+            </div>
+        </div>
+
+        <!-- React -->
+        <div class="skill-item">
+            <div class="flex justify-between mb-2">
+                <span class="text-gray-700">React</span>
+                <span class="text-blue-600">85%</span>
+            </div>
+            <div class="bg-gray-200 rounded-full h-2">
+                <div class="bg-blue-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="85%"></div>
+            </div>
+        </div>
+
+        <!-- Tailwind CSS -->
+        <div class="skill-item">
+            <div class="flex justify-between mb-2">
+                <span class="text-gray-700">Tailwind CSS</span>
+                <span class="text-blue-600">88%</span>
+            </div>
+            <div class="bg-gray-200 rounded-full h-2">
+                <div class="bg-blue-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="88%"></div>
+            </div>
+        </div>
+
+        <!-- Git/GitHub -->
+        <div class="skill-item">
+            <div class="flex justify-between mb-2">
+                <span class="text-gray-700">Git/GitHub</span>
+                <span class="text-blue-600">85%</span>
+            </div>
+            <div class="bg-gray-200 rounded-full h-2">
+                <div class="bg-blue-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="85%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <!-- Tools & Others -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="text-center mb-6">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-tools text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Others</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700">Python</span>
+                                <span class="text-purple-600">85%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-purple-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="93%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700">Excel</span>
+                                <span class="text-purple-600">90%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-purple-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="78%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700">Power BI</span>
+                                <span class="text-purple-600">85%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-purple-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="75%"></div>
+                            </div>
+                        </div>
+						
+						<div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700">SQL</span>
+                                <span class="text-purple-600">85%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-purple-600 h-2 rounded-full skill-bar" style="width: 0%" data-width="93%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+				
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Projects</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-cloud-sun-rain text-white text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Rainfall Web App</h3>
+                        <p class="text-gray-600 mb-4">Real-time weather prediction </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">React</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Node.js</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm">MongoDB</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="https://georgezirra.github.io/" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                            <a href="https://github.com/georgezirra/georgezirra.github.io.git" class="text-gray-600 hover:text-gray-800 flex items-center">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+<!-- Project: Churn Data Story -->
+<div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+    <!-- Header with Icon -->
+    <div class="h-48 bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center">
+        <i class="fas fa-chart-line text-white text-4xl"></i>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Customer Churn Analysis</h3>
+        <p class="text-gray-600 mb-4">
+            A data-driven story exploring customer churn patterns, key drivers, and insights for retention strategies.
+        </p>
+
+        <!-- Tech stack tags -->
+        <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm">Python</span>
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Pandas</span>
+            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">Seaborn</span>
+            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Numpy</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex justify-between">
+            <a href="https://georgezirra.github.io/customer_churn_story/" class="text-blue-600 hover:text-blue-800 flex items-center">
+                <i class="fas fa-external-link-alt mr-2"></i>Read Story
+            </a>
+            <a href="https://github.com/georgezirra/customer_churn_story.git" class="text-gray-600 hover:text-gray-800 flex items-center">
+                <i class="fab fa-github mr-2"></i>GitHub
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Project: Vegetation Health Analysis -->
+<div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+    <!-- Header with Icon -->
+    <div class="h-48 bg-gradient-to-r from-green-600 to-lime-600 flex items-center justify-center">
+        <i class="fas fa-leaf text-white text-4xl"></i>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Is Our Vegetation Getting Healthier or Disappearing?</h3>
+        <p class="text-gray-600 text-justify mb-4">
+            A geospatial analysis of <strong>Mubi North L.G.A (2019–2025)</strong> using Sentinel-2 NDVI time-series 
+            to assess vegetation dynamics. This study highlights zones of strong vegetation growth, decline, and stability, 
+            providing insights into urban expansion, land use, and climate impacts. 
+        </p>
+
+        <!-- Tech stack tags -->
+        <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Google Earth Engine</span>
+            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Sentinel-2</span>
+            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">NDVI</span>
+            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm">Change Detection</span>
+            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm">Cloud Masking</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex justify-between">
+            <a href="https://lnkd.in/dNRQKhNg" class="text-blue-600 hover:text-blue-800 flex items-center">
+                <i class="fas fa-external-link-alt mr-2"></i>View Code
+            </a>
+            <a href="https://www.linkedin.com/posts/george-vahyella-zirra-44035a126_geospatialanalysis-remotesensing-googleearthengine-activity-7352731971946479616-mMwK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB8FHvAB4eTbgS1S5Bbc5l7sqK7kzHlP_co" class="text-gray-600 hover:text-gray-800 flex items-center">
+                <i class="fab fa-github mr-2"></i>LinkedIn
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Project: Urban Green Spaces -->
+<div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+    <!-- Header with Icon -->
+    <div class="h-48 bg-gradient-to-r from-green-500 to-emerald-600 flex items-center justify-center">
+        <i class="fas fa-tree text-white text-4xl"></i>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Urban Green Spaces: Increasing or Decreasing?</h3>
+        <p class="text-gray-600 text-justify mb-4">
+            A geospatial case study of <strong>Mubi North (2018–2024)</strong>, analyzing NDVI trends using 
+            <strong>Google Earth Engine</strong> to track vegetation cover and urban greenness. 
+            This project highlights the implications of green space loss or growth on climate resilience. 
+        </p>
+
+        <!-- Tech stack tags -->
+        <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Google Earth Engine</span>
+            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">NDVI</span>
+            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">Sentinel-2</span>
+            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm">Time-series Analysis</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex justify-between">
+            <a href="https://lnkd.in/dCBCJJPM" class="text-blue-600 hover:text-blue-800 flex items-center">
+                <i class="fas fa-external-link-alt mr-2"></i>View Code
+            </a>
+            <a href="https://github.com/georgezirra/urban_green_spaces.git" class="text-gray-600 hover:text-gray-800 flex items-center">
+                <i class="fab fa-github mr-2"></i>GitHub
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Project: Rainfall vs Vegetation Correlation -->
+<div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+    <!-- Header with Icon -->
+    <div class="h-48 bg-gradient-to-r from-blue-500 to-green-600 flex items-center justify-center">
+        <i class="fas fa-water text-white text-4xl"></i>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Rainfall & Vegetation Correlation in Adamawa State</h3>
+        <p class="text-gray-600 mb-4">
+            A satellite-based study (2020–2025) comparing NDVI greenness with CHIRPS rainfall data in 
+            <strong>Adamawa State</strong>. Results show a strong positive correlation (<strong>R = 0.76</strong>), 
+            proving that rainfall decline directly impacts vegetation health and resilience in the region.
+        </p>
+
+        <!-- Tech stack tags -->
+        <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Google Earth Engine</span>
+            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">NDVI</span>
+            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">CHIRPS Rainfall</span>
+            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm">Climate Data</span>
+            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm">Correlation Analysis</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex justify-between">
+            <a href="https://code.earthengine.google.com/4e5e85f9d8701d1cd4aa2dede9485b6c" class="text-blue-600 hover:text-blue-800 flex items-center">
+                <i class="fas fa-external-link-alt mr-2"></i>View Code
+            </a>
+            <a href="https://www.linkedin.com/posts/george-vahyella-zirra-44035a126_googleearthengine-gis-climatedata-activity-7346551630042935297-dC7A?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB8FHvAB4eTbgS1S5Bbc5l7sqK7kzHlP_co" class="text-gray-600 hover:text-gray-800 flex items-center">
+                <i class="fab fa-github mr-2"></i>LinkedIn
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Experience & Education</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <!-- Timeline -->
+                <div class="relative">
+                    <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-300"></div>
+                    
+                    <!-- Experience Item 1 -->
+<!-- Master's in GIS -->
+<div class="relative flex items-start mb-12 timeline-item">
+    <div class="ml-16 bg-white p-6 rounded-lg shadow-lg w-full">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+            <div>
+                <h3 class="text-xl font-bold text-gray-800 mb-1">M.Sc. in Geographic Information Systems (GIS)</h3>
+                <p class="text-blue-600 font-medium mb-2">Adamawa State University, Mubi</p>
+                <p class="text-gray-600 mb-4">
+                    Currently pursuing a Master’s degree in GIS, focusing on spatial analysis, remote sensing, 
+                    geospatial data management, and applications for community development. <br>
+                    <span class="italic text-gray-500">Status: In View</span>
+                </p>
+            </div>
+            <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">2023 – Present</span>
+        </div>
+    </div>
+</div>
+
+
+
+                    <!-- CareerEx Data Science Programme -->
+<div class="relative flex items-start mb-12 timeline-item">
+    <div class="ml-16 bg-white p-6 rounded-lg shadow-lg w-full">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+            <div>
+                <h3 class="text-xl font-bold text-gray-800 mb-1">Data Science Programme</h3>
+                <p class="text-blue-600 font-medium mb-2">CareerEx</p>
+                <p class="text-gray-600 mb-4">
+                    Completed an intensive 3-month programme covering Python, Machine Learning, 
+                    Data Analysis, and Storytelling. Successfully obtained certification.
+                </p>
+            </div>
+            <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">Apr – Jun 2025</span>
+        </div>
+    </div>
+</div>
+
+
+
+                    <!-- Education Item -->
+                    <div class="relative flex items-start mb-12 timeline-item">
+                        <div class="ml-16 bg-white p-6 rounded-lg shadow-lg w-full">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-1">B.Sc Computer Science</h3>
+                                    <p class="text-blue-600 font-medium mb-2">Adamawa State University, Mubi</p>
+                                    <p class="text-gray-600 mb-4">Graduated with honors. Specialized in web development.</p>
+                                </div>
+                                <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">2012 - 2018</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+ 
+            
+                <!-- Contact Info -->
+	
+<!-- Footer -->
+<footer id = "contact" class="bg-gray-900 py-6">
+  <div class="footer text-center space-y-6 max-w-4xl mx-auto">
+
+    <!-- Get In Touch Section -->
+    <div class="text-center">
+      <h2 class="text-3xl font-bold text-white mb-2">Get In Touch</h2>
+      <div class="w-16 h-1 bg-blue-600 mx-auto mb-3"></div>
+      <p class="text-base text-gray-300 max-w-xl mx-auto px-4">
+        I'm always interested in new opportunities and exciting projects. Let's discuss how we can work together!
+      </p>
+    </div>
+
+    <!-- Contact Links -->
+    <div class="flex flex-col md:flex-row flex-wrap justify-center items-center gap-4">
+      
+      <!-- Email -->
+      <div class="bg-gray-800 hover:bg-gray-700 px-4 py-3 rounded-lg transform transition duration-300 hover:scale-105">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=georgezirra@gmail.com"  target="_blank" 
+           class="text-white flex items-center space-x-2 text-sm hover:text-blue-400">
+          <i class="fas fa-envelope text-blue-400 text-lg"></i>
+          <span>georgezirra@gmail.com</span>
+        </a>
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="bg-gray-800 hover:bg-gray-700 px-4 py-3 rounded-lg transform transition duration-300 hover:scale-105">
+        <a href="https://www.linkedin.com/in/george-vahyella-zirra-44035a126" 
+           class="text-white flex items-center space-x-2 text-sm hover:text-orange-400" 
+           target="_blank">
+          <i class="fab fa-linkedin text-orange-400 text-lg"></i>
+          <span>linkedin.com/in/georgezirra</span>
+        </a>
+      </div>
+
+      <!-- GitHub -->
+      <div class="bg-gray-800 hover:bg-gray-700 px-4 py-3 rounded-lg transform transition duration-300 hover:scale-105">
+        <a href="https://github.com/georgezirra" 
+           class="text-white flex items-center space-x-2 text-sm hover:text-purple-400" 
+           target="_blank">
+          <i class="fab fa-github text-purple-400 text-lg"></i>
+          <span>github.com/georgezirra</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-gray-400 text-xs pt-2">
+      © 2025 George Zirra — All Rights Reserved
+    </div>
+  </div>
+</footer>
